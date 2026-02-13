@@ -8,8 +8,8 @@ mongoose
   .then(() => {
     console.log("Connection Ok !!!");
   })
-  .catch((ali) => {
-    console.log("Error: " + ali);
+  .catch((e) => {
+    console.log("Error: " + e);
   });
 
 const app = express();
