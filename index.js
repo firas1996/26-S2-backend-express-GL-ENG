@@ -1,10 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const { connect } = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
 
-mongoose
-  .connect(process.env.DATABASE)
+connect(process.env.DATABASE)
   .then(() => {
     console.log("Connection Ok !!!");
   })
