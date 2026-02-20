@@ -1,6 +1,7 @@
 const express = require("express");
 const { connect } = require("mongoose");
 const dotenv = require("dotenv");
+const userRoutes = require("./routes/userRoutes");
 dotenv.config({ path: "./.env" });
 
 connect(process.env.DATABASE)
@@ -12,6 +13,8 @@ connect(process.env.DATABASE)
   });
 
 const app = express();
+app.use(express.json());
+app.use("/users", userRoutes);
 
 const port = 1234;
 
