@@ -21,6 +21,7 @@ const userSchema = new Schema({
     type: String,
     required: [true, "The password is required !!!!"],
     minlength: 8,
+    // select: false,
     // validate:validator.isStrongPassword
   },
   confirm_password: {
@@ -56,6 +57,10 @@ userSchema.pre("save", async function (next) {
   }
   return next;
 });
+
+userSchema.methods.checkPassword = async function (pass, hPass) {
+  return await bcryptjs.compare(pass, hPass);
+};
 
 const User = model("User", userSchema);
 
